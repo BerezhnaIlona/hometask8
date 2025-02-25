@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 8</h1>
+    <p>Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів (поки він не відмовиться). Знаходити сумарний виграш.</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        let newArr = [];
+        let numb;
+        for (let i = 0; i < 10; i++) {
+          numb = -500 + Math.floor(Math.random() * 1001);
+          newArr.push(numb);
+        }
+
+        function totalWinningSum(arr) {
+          let numb, clientDecision;
+          let sum = 0;
+          do {
+            clientDecision = confirm('Бажаєте зіграти в лотерею');
+            if (clientDecision) {
+              numb = parseInt(prompt('Введіть номер від 0 до 10', ''));
+              sum += arr[numb];
+              alert(sum);
+            }
+          } while (clientDecision);
+          return sum;
+        }
+
+        let sumWin = totalWinningSum(newArr);
+
+        document.write(`Загальна сума виграшу становить ${sumWin}`);
+      }
+    </script>
+  </body>
+</html>

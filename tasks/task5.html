@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 5.</h1>
+    <p>Дано послідовність оцінок учня. Підрахувати кількість: двійок, кількість хороших оцінок (добре, відмінно); кількість оцінок, які нижче середнього.</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        let pupilScore = [5, 3, 4, 4, 5, 1, 2, 3, 1, 2, 5, 1, 2, 3, 2, 1, 2, 5, 4, 4, 3];
+
+        //2. Знаходимо результат
+        function countScores(arr) {
+          let countScore = 0;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 2) countScore++;
+          }
+          return countScore;
+        }
+
+        function countGoodScores(arr) {
+          let countScore = 0;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 5 || arr[i] === 4) countScore++;
+          }
+          return countScore;
+        }
+
+        function countBadScores(arr) {
+          let countScore = 0;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 3 || arr[i] === 2 || arr[i] === 1) countScore++;
+          }
+          return countScore;
+        }
+        document.write(`Kількість двійок становить ${countScores(pupilScore)} шт <br>`);
+        document.write(`Kількість хороших оцінок (добре, відмінно) ${countGoodScores(pupilScore)} шт <br>`);
+        document.write(`Kількість оцінок які нижче середнього ${countBadScores(pupilScore)} шт<br>`);
+      }
+    </script>
+  </body>
+</html>

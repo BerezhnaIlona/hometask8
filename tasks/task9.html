@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 9</h1>
+    <p>Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        let numbCell = parseInt(prompt('Введіть кількicть клітинок від 1 до 10 для гри в морскький бій', '0'));
+        let numbShip = parseInt(prompt('Введіть кількicть кораблів від 1 до 5 для гри в морскький бій', '0'));
+
+        function putShipsOnLina(cells, ships) {
+          let newArr = [];
+          let num;
+          for (let i = 1; i <= cells; i++) newArr.push(0);
+          console.log(newArr);
+          for (let i = 1; i <= ships; i++) {
+            num = 1 + Math.floor(Math.random() * cells - 1 + 1);
+            newArr.splice(num, 1, 1);
+          }
+          return newArr;
+        }
+
+        function sankShip(arr) {
+          let sum = 0;
+          for (let j = 0; j < arr.length; j++) {
+            if (arr[j] === 1) sum++;
+          }
+          while (sum > 0) {
+            let searchShip = parseInt(prompt(`Введіть номер клітинки для гри в морскький бій від 1 до ${numbCell}`, `0`));
+            if (arr[searchShip] === 1) {
+              result = alert('Корабль потоплен');
+              sum--;
+            } else result = alert('Спробуй знову');
+          }
+          return document.write(`Всі кораблі потоплені`);
+        }
+
+        let lineWithShips = putShipsOnLina(numbCell, numbShip);
+        sankShip(lineWithShips);
+      }
+    </script>
+  </body>
+</html>

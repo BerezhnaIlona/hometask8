@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 6.</h1>
+    <p>Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        let productsPrices = [1000, 20, 31, 150, 300, 390];
+        let productsTitles = ['сир', ' сік', ' хліб', 'чай', ' шоколад', ' варення'];
+
+        //2. Знаходимо результат
+        let clientMoney = parseInt(prompt('Введіть суму грошей, яка є у користувача(мінімальна сума становить 1000)', ''));
+        function clientCanBuy(money, price, product) {
+          let countProduct = [];
+          for (let i = 0; i < price.length; i++) {
+            if (money === price[i] || money > price[i]) {
+              money -= price[i];
+              countProduct.push(product[i]);
+            }
+          }
+          return countProduct;
+        }
+
+        document.write(`Продукти які може позволити собі користач на сумму ${clientMoney} грн є ${clientCanBuy(clientMoney, productsPrices, productsTitles)}.`);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 2.</h1>
+    <p>Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:</p>
+    <ul>
+      <ol>
+        номери днів, протягом яких кількість відвідувачів була меншою за 20;
+      </ol>
+      <ol>
+        номери днів, коли кількість відвідувачів була мінімальною;
+      </ol>
+      <ol>
+        номери днів, коли кількість відвідувачів була максимальною;
+      </ol>
+      <ol>
+        загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+      </ol>
+    </ul>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        function getGrates(length) {
+          let arr = [];
+          for (let i = 0; i <= length; i++) {
+            arr[i] = 10 + Math.floor(Math.random() * 100 - 10 + 1);
+          }
+          return arr;
+        }
+
+        const countOfCustomers = getGrates(6);
+
+        //2. Знаходимо результат
+        function customersNumberMoreMinNumb(arr) {
+          let newArr = [];
+          let minNumb = 20;
+          for (let i = 0; i < 7; i++) {
+            if (arr[i] > minNumb) newArr.push(i + 1);
+          }
+          return newArr;
+        }
+
+        function customersMinNumberIs(arr) {
+          let newArr = [];
+          let minNumb = Math.min(...arr);
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === minNumb) {
+              newArr.push(i + 1);
+            }
+          }
+          return newArr;
+        }
+
+        function customersMaxNumberIs(arr) {
+          let newArr = [];
+          let minNumb = Math.max(...arr);
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === minNumb) {
+              newArr.push(i + 1);
+            }
+          }
+          return newArr;
+        }
+
+        function countWeekdays(arr) {
+          let s = 0;
+          for (let i = 0; i < 5; i++) {
+            s += arr[i];
+          }
+          return s;
+        }
+
+        function countWeekendDays(arr) {
+          let s = 0;
+          for (let i = 5; i <= 6; i++) {
+            s += arr[i];
+          }
+          return s;
+        }
+
+        let qualityMoreMinNumb = customersNumberMoreMinNumb(countOfCustomers);
+        let minQualityCustomersNumber = customersMinNumberIs(countOfCustomers);
+        let maxQualityCustomersNumber = customersMaxNumberIs(countOfCustomers);
+        let numbCustomersDuringWeekDays = countWeekdays(countOfCustomers);
+        let numbCustomersDuringWeekendDays = countWeekendDays(countOfCustomers);
+
+        document.write(`Дано масив, який зберігає кількість відвідувачів магазину протягом тижня ${countOfCustomers} <br>`);
+        document.write(`Номера днів, протягом яких кількість відвідувачів була меншою за 20 є ${qualityMoreMinNumb} <br>`);
+        document.write(`Номера днів, номери днів, коли кількість відвідувачів була мінімальною є ${minQualityCustomersNumber} <br>`);
+        document.write(`Номера днів, коли кількість відвідувачів була максимальною ${maxQualityCustomersNumber} <br>`);
+        document.write(`загальну кількість клієнтів у робочі дні є ${numbCustomersDuringWeekDays} та на вихідних є ${numbCustomersDuringWeekendDays}.`);
+      }
+    </script>
+  </body>
+</html>

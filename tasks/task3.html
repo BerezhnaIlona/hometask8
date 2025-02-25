@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 3.</h1>
+    <p>Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        let namesArr = ['Микола', 'Олеся', 'Василій', 'Іван', 'Анастасія', 'Дмитро', 'Ніна', 'Іван', 'Анастасія', 'Дмитро', 'Ніна', 'Іван'];
+
+        function countNameIvan(arr) {
+          let countNameIvan = 0;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == 'Іван') countNameIvan++;
+          }
+          return countNameIvan;
+        }
+        let numberOfNameIvan = countNameIvan(namesArr);
+        document.write(`Імʼя Іван зустрачаєтсья ${numberOfNameIvan}`);
+      }
+    </script>
+  </body>
+</html>

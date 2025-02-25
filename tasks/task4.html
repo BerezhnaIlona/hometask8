@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 4.</h1>
+    <p>Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які : починаються на букву «А»; перша і остання літери співпадають;складаються з більше ніш 5 символів;</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        const arrCarsNumber = ['ZA1234AB', 'ZA5678CD', 'ZA4321XY', 'AA0853ZA', 'IE8935II', 'AP4994TH', 'AP0399AA', 'AP632-62PT'];
+
+        //2. Знаходимо результат
+        function sameFirstLetter(arr) {
+          let letter,
+            numbCount = 0;
+          for (let i = 0; i < arr.length; i++) {
+            letter = arr[i].charAt(0);
+            if (letter == 'A') numbCount++;
+          }
+          return numbCount;
+        }
+
+        function sameLastLetter(arr) {
+          let letter1,
+            letter2,
+            numbCount = 0;
+          for (let i = 0; i < arr.length; i++) {
+            letter1 = arr[i].charAt(0);
+            letter2 = arr[i].charAt(arr[i].length - 1);
+            if (letter1 == letter2) numbCount++;
+          }
+          return numbCount;
+        }
+
+        function counLetter(arr) {
+          let numbCount = 0;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].length - 1 > 8) numbCount++;
+          }
+          return numbCount;
+        }
+
+        document.write(`Kількість номерів, які починаються на букву «А» ${sameFirstLetter(arrCarsNumber)} <br>`);
+        document.write(`Kількість номерів, в яких перша і остання літери співпадають ${sameLastLetter(arrCarsNumber)}<br>`);
+        document.write(`Kількість номерів, які складаються з більше ніш 8 символів ${counLetter(arrCarsNumber)}`);
+      }
+    </script>
+  </body>
+</html>

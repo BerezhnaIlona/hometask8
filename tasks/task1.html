@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/task_style.css" />
+  </head>
+  <body>
+    <h1>Задача 1.</h1>
+    <p>Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).</p>
+    <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+    <script>
+      if (confirm('Почати тестування?')) {
+        //1. Вводимо необхідні дані
+        const studentGrates = [];
+
+        function getGrates(length) {
+          let arr = [];
+          for (let i = 0; i <= length; i++) {
+            arr[i] = 2 + Math.floor(Math.random() * 4);
+          }
+          return arr;
+        }
+
+        function avgGrates(arr) {
+          let s = 0;
+          let result = '';
+          let count = [0, 0, 0, 0, 0, 0];
+          for (let i = 0; i < arr.length; i++) {
+            s += arr[i];
+            console.log(arr[i]);
+            if (arr[i] === 5) count[5]++;
+            else if (arr[i] === 4) count[4]++;
+            else if (arr[i] === 3) count[3]++;
+            else if (arr[i] === 2) count[2]++;
+          }
+          if (count[2] > 0) result = 'Двійочник';
+          else if (count[3] > 0) result = 'Трійочник';
+          else if (count[4] > 0) result = 'Хорошист';
+          else if (count[5] > 0) result = 'Відмінник';
+
+          let avg = s / arr.length;
+          return { avg: avg, result: result };
+        }
+        //2. Знаходимо та виводемо результат
+        let arrOfGrates = getGrates(5);
+        let avgOfGrates = avgGrates(arrOfGrates);
+        document.write(`Середній бал становить ${avgOfGrates.avg.toFixed(2)} . Ученик відноситьcя до категорії ${avgOfGrates.result}`);
+      }
+    </script>
+  </body>
+</html>

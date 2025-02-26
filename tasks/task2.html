@@ -48,25 +48,17 @@
         }
 
         function customersMinNumberIs(arr) {
-          let newArr = [];
           let minNumb = Math.min(...arr);
           for (let i = 0; i < arr.length; i++) {
-            if (arr[i] === minNumb) {
-              newArr.push(i + 1);
-            }
+            if (arr[i] === minNumb) return arr[i];
           }
-          return newArr;
         }
 
         function customersMaxNumberIs(arr) {
-          let newArr = [];
-          let minNumb = Math.max(...arr);
+          let maxNumb = Math.max(...arr);
           for (let i = 0; i < arr.length; i++) {
-            if (arr[i] === minNumb) {
-              newArr.push(i + 1);
-            }
+            if (arr[i] === maxNumb) return arr[i];
           }
-          return newArr;
         }
 
         function countWeekdays(arr) {
